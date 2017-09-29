@@ -9,9 +9,8 @@
 
 Steps to Run this application
 
-$ mvn clean 
-$ mvn package 
-$ java -jar target/ShoppingCart-0.0.1-SNAPSHOT.jar
+$ mvn clean install
+$ java -jar target/Santhosh-todo-app-0.0.1-SNAPSHOT.jar
 
 or
 
