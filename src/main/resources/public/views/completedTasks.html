@@ -1,0 +1,45 @@
+<div class="container">
+
+   	<h3><span class="glyphicon glyphicon-check"></span> Completed tasks</h3>
+   	
+		<div><br/>
+		<div class="input-group">
+    		<input type="text" class="form-control" ng-model="searchText"/>
+    		<span class="input-group-addon">
+        		<i class="glyphicon glyphicon-search"></i>
+    		</span>
+    	</div>	
+    </div>
+
+    
+	<table class="table table-hover">
+    	<thead>
+      		<tr>
+        		<th class="text-info">Name</th>
+        		<th class="text-info">Date</th>
+        		<th class="text-info">Category</th>
+        		<th class="text-info">Priority</th>
+        		<th width="150"class="text-info">Action</th>
+      		</tr>
+    	</thead>
+    	<tbody ng-controller="TasksActionsController">
+      		<tr ng-repeat="task in tasks | filter:searchText | filter: { isdone:'true'} | orderBy:'-id'">
+        		<td><del>{{task.taskname}}</del></td>
+        		<td>{{task.performdate | date:'dd/MM/yyyy @ h:mma'}}</td>
+        		<td>{{task.category}}</td>
+        		<td>{{task.priority}}</td>
+        		<td>
+        			<a ng-href='' ng-click='deleteTask(task.id)' style="color:#ff6c60">
+        				<span class="glyphicon glyphicon-trash" style='font-size: 17px'></span>
+        			</a>
+        		</td>
+      		</tr>     		
+   		</tbody>
+  	</table>
+  	
+	<a href="#/">
+		<button type=button class="btn btn-warning" >
+			<span class="glyphicon glyphicon-arrow-left" ></span>
+		</button> 
+	</a>	
+</div>

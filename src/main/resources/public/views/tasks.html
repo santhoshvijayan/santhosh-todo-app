@@ -1,0 +1,57 @@
+<div class="container">
+
+   	<h3><span class="glyphicon glyphicon-time"></span> Pending tasks</h3>
+   	
+	<div><br/>
+		<div class="input-group">
+    		<input type="text" class="form-control" ng-model="searchText"/>
+    		<span class="input-group-addon">
+        		<i class="glyphicon glyphicon-search"></i>
+    		</span>
+    	</div>	
+    </div>
+    <br/>
+	<table class="table table-hover">
+    	<thead>
+      		<tr>
+        		<th class="text-info">Name</th>
+        		<th class="text-info">Date</th>
+        		<th class="text-info">Category</th>
+        		<th class="text-info">Priority</th>
+        		<th width="150"class="text-info">Action</th>
+      		</tr>
+    	</thead>
+    	<tbody ng-controller="TasksActionsController">
+      		<tr ng-repeat="task in tasks | filter:searchText | filter: { isdone:'false'} | orderBy:'-id'">
+        		<td>{{task.taskname}}</td>
+        		<td>{{task.performdate | date:'dd/MM/yyyy @ h:mma'}}</td>
+        		<td>{{task.category}}</td>
+        		<td>{{task.priority}}</td>
+        		<td>
+        			<a ng-href='' ng-click='checkTask(task.id)' style="color:#78cc78">
+        				<span class="glyphicon glyphicon-ok" style='font-size: 17px'></span>
+        			</a> &nbsp;
+        			<a href='#/editTask{{task.id}}' style="color:#41cac0">
+        				<span class="glyphicon glyphicon-pencil" style='font-size: 17px'></span>
+        			</a> &nbsp;
+        			<a ng-href='' ng-click='deleteTask(task.id)' style="color:#ff6c60">
+        				<span class="glyphicon glyphicon-trash" style='font-size: 17px'></span>
+        			</a>
+        		</td>
+      		</tr>     		
+   		</tbody>
+  	</table>
+  	
+  		
+  	<a href="#/addTask">
+		<button type=button class="btn btn-success" >
+			<span class="glyphicon glyphicon-plus" ></span>
+		</button> 
+	</a>
+	
+  	<a href="#/completedTasks">
+		<button type=button class="btn btn-danger" >
+			<span class="glyphicon glyphicon-th-list" ></span>
+		</button> 
+	</a>
+</div>
